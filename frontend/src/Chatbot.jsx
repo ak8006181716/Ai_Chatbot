@@ -15,7 +15,7 @@ export default function Chatbot() {
      setInput("");
 
     // call backend
-    const res = await axios.post("http://localhost:3000/chat", { content: input });
+    const res = await axios.post("https://ai-chatbot-indol-delta-82.vercel.app/chat", { content: input });
 
     const data = res.data;
 
@@ -36,9 +36,9 @@ export default function Chatbot() {
     }, [messages]);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div className="p-4 w-96 mx-auto border rounded-lg shadow-md bg-white">
-      <div ref={listRef} className="h-80 overflow-y-auto  mb-4 border-b p-2 no-scrollbar">
+    <div className="min-h-screen bg-gray-100 p-20 flex items-center justify-center">
+    <div className="p-4 w-screen mx-auto border rounded-lg shadow-md bg-white">
+      <div ref={listRef} className="h-98 overflow-y-auto  mb-4 border-b p-2 no-scrollbar">
         {messages.map((m, i) => (
           <div
             key={i}
