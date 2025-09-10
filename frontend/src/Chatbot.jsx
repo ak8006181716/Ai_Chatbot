@@ -15,7 +15,7 @@ export default function Chatbot() {
      setInput("");
 
     // call backend
-    const res = await axios.post("https://ai-chatbot-git-main-ak8006181716s-projects.vercel.app/", { content: input });
+    const res = await axios.post("https://ai-chatbot-git-main-ak8006181716s-projects.vercel.app/chat", { content: input });
 
     const data = res.data;
 
