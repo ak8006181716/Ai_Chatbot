@@ -10,8 +10,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const app =express();
 app.use(cors({
   origin: [
-    "ai-chatbot-g8e8.vercel.app",              // dev
-    "ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app"    // deployed frontend
+    "https://ai-chatbot-g8e8.vercel.app",
+    "https://ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app"  
   ],
   methods: ["GET", "POST"],
   credentials: true
