@@ -8,23 +8,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 const app =express();
-const allowedOrigins = [
-  "http://localhost:5173",                     // local dev
-  "https://ai-chatbot-g8e8.vercel.app",        // deployed frontend
-  "https://ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app" // preview deploys
-];
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.log("Blocked by CORS:", origin); // debug log
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true
-}));
+
+app.use(cors());
 
 app.use(express.json());
 
