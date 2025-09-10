@@ -8,15 +8,30 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 const app =express();
+const allowedOrigins = [
+  "http://localhost:5173",                     // local dev
+  "https://ai-chatbot-g8e8.vercel.app",        // deployed frontend
+  "https://ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app" // preview deploys
+];
 app.use(cors({
-  origin: [
-    "https://ai-chatbot-g8e8.vercel.app",
-    "https://ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app"  
-  ],
-  methods: ["GET", "POST"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "OPTIONS"],
   credentials: true
 }));
+
 app.use(express.json());
+app.options("*", cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true
+}));
+
 
 dotenv.config();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
