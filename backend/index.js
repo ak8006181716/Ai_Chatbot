@@ -18,6 +18,7 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.log("Blocked by CORS:", origin); // debug log
       callback(new Error("Not allowed by CORS"));
     }
   },
@@ -26,11 +27,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
-app.options("*", cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "OPTIONS"],
-  credentials: true
-}));
+
+
 
 
 dotenv.config();
