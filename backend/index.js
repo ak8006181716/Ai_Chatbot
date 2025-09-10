@@ -8,7 +8,14 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
 const app =express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "ai-chatbot-g8e8.vercel.app",              // dev
+    "ai-chatbot-g8e8-8x3vk78xj-ak8006181716s-projects.vercel.app"    // deployed frontend
+  ],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 app.use(express.json());
 
 dotenv.config();
