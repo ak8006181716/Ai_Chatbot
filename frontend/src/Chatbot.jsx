@@ -43,7 +43,7 @@ export default function Chatbot() {
           <div
             key={i}
             className={`my-2 p-2 rounded-lg ${
-              m.sender === "user" ? "bg-blue-100 text-right" : "bg-gray-100"
+              m.sender === "user" ? "bg-blue-200 w-fit ml-auto text-right" : "bg-gray-200 w-fit mr-auto"
             }`}
           >
             {m.text}
